@@ -1,25 +1,16 @@
-const credits = 23580;
-const pricePerDroid = 3000;
-const droidQuantity = prompt('Укажите необходимое количество', '');
-const totalPrice = pricePerDroid * droidQuantity;
-const remainCredits = credits - totalPrice;
-let droidEnd;
-
-
-// окончания сделал с помощью ветвлений, но если credits будет увеличиваться - нужно писать функцию.
-
-if (droidQuantity === '1') {
-  droidEnd = 'дроид';
-} else if (droidQuantity >= 2 && droidQuantity <= 4) {
-  droidEnd = 'дроида';
-} else {
-  droidEnd = 'дроидов';
-}
-
-if (droidQuantity === null) {
-  console.log('Отменено пользователем!');
-} else if (totalPrice > credits) {
-  console.log('Недостаточно средств!');
-} else {
-  console.log(`Вы купили ${droidQuantity} ${droidEnd}, на счету осталось ${remainCredits} кредитов`);
-}
+const passwords = ['qwerty', '111qwe', '123123', 'r4nd0mp4zzw0rd'];
+let attemptsLeft = 3;
+let userInput;
+do {
+  userInput = prompt('Введите Ваш пароль', '');
+  if (userInput === null) {
+    break;
+  } else if (!passwords.includes(userInput)) {
+    attemptsLeft -= 1;
+    alert(`Неверный пароль, у вас осталось ${attemptsLeft} попыток`);
+    if (attemptsLeft === 0) { alert('У вас закончились попытки, аккаунт заблокирован!'); }
+  } else if (passwords.includes(userInput)) {
+    alert('Добро пожаловать!');
+    break;
+  }
+} while (attemptsLeft > 0 && userInput !== null);

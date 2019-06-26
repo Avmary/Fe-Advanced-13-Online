@@ -1,5 +1,5 @@
 const logins = ['Mango', 'robotGoogles', 'Poly', 'Aj4x1sBozz', 'qwerty123'];
-// const newLogin = prompt('Введите логин!');
+
 function isLoginValid(login) {
   return login.length >= 4 && login.length <= 16;
 }

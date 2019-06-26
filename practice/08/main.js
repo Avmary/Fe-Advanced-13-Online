@@ -1,24 +1,18 @@
-/* eslint-disable no-alert */
-const catalog = prompt('Введите номер интересующей Вас категории: 1 - Каталог хостелов, 2 - Каталог бюджетных отелей, 3 - Каталог отелей ***", 4 - Каталог отелей ****", 5 - Каталог лучших отелей');
-switch (catalog) {
-  case null:
-    alert('Очень жаль, приходите еще!');
-    break;
-  case '1':
-    alert('Каталог хостелов');
-    break;
-  case '2':
-    alert('Каталог бюджетных отелей');
-    break;
-  case '3':
-    alert('Каталог отелей ***');
-    break;
-  case '4':
-    alert('Каталог отелей ****');
-    break;
-  case '5':
-    alert('Каталог лучших отелей');
-    break;
-  default:
-    alert('Неверный ввод');
-}
+const filterFromArray = function (arr, ...args) {
+  for (let i = arr.length - 1; i >= 0; i -= 1) {
+    for (let j = 0; j < args.length; j += 1) {
+      if (arr[i] === args[j]) {
+        arr.splice(i, 1);
+      }
+    }
+  }
+  return arr;
+};
+// Вызовы функции для проверки
+console.log(
+  filterFromArray([1, 2, 3, 4, 5], 2, 4),
+); // [1, 3, 5]
+
+console.log(
+  filterFromArray([12, 4, 3, 8, 17], 3, 29, 18, 4),
+); // [12, 8, 17]

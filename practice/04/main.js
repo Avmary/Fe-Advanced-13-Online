@@ -1,9 +1,12 @@
-const correctPassword = 'jqueryismyjam';
-const yourPassword = prompt('Введите пароль доступа', '');
-if (yourPassword === correctPassword) {
-  console.log('Доступ в секретный бункер разрешен!');
-} else if (yourPassword === null) {
-  console.log('Была нажата отмена!');
-} else {
-  console.log('Неверный пароль, активирована система защиты!');
+function getPx(str) {
+  if (typeof (str) === 'string') {
+    const num = Number.parseFloat(str);
+    return num;
+  }
+  return null;
 }
+console.log(getPx('10px') === 10); // true
+console.log(getPx('10.5') === 10.5); // true
+console.log(getPx('0') === 0); // true
+console.log(getPx(-1)); // null
+console.log(getPx(10)); // null

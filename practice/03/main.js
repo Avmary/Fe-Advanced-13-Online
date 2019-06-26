@@ -1,7 +1,13 @@
-const name = 'Mango';
-const date = '14/08/2137';
-const roomType = 'люкс';
-const message = `${name} прибывает на отдых ${date} в ${roomType}`;
-const test = 'Mango прибывает на отдых 14/08/2137 в люкс';
-console.assert(message === test, 'Error in message');
-console.log(message);
+function checkForSpam(str) {
+  str = str.toLowerCase();
+  if (str.indexOf('spam') > 0 || str.indexOf('sale') > 0) {
+    return true;
+  } return false;
+}
+console.log(checkForSpam('Latest technology news')); // false
+
+console.log(checkForSpam('JavaScript weekly newsletter')); // false
+
+console.log(checkForSpam('Get best sale offers now!')); // true
+
+console.log(checkForSpam('[SPAM] How to earn fast money?')); // true

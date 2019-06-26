@@ -1,7 +1,15 @@
-const name = 'Генератор защитного поля';
-let price = 1000;
-price = 2000;
-const result = `"Выбран «${name}», цена за штуку ${price} кредитов"`;
-const test = '"Выбран «Генератор защитного поля», цена за штуку 2000 кредитов"';
-console.assert(result === test, 'Error in result');
-console.log(result);
+const even = 'Even';
+const odd = 'Odd';
+function checkNumberType(num) {
+  if (num % 2 === 0) {
+    return even;
+  }
+  return odd;
+}
+console.log(checkNumberType(2)); // 'Even'
+
+console.log(checkNumberType(46)); // 'Even'
+
+console.log(checkNumberType(3)); // 'Odd'
+
+console.log(checkNumberType(17)); // 'Odd'

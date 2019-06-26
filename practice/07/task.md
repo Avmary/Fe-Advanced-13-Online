@@ -1,13 +1,26 @@
-/* 
-  В переменную value записывается случайное число.
+/*  
+  Есть массив уникальных чисел uniqueNumbers.
   
-  Объяви переменную type, в которую, используя ветвления запиши строку:  
-    - "even" если value четное
-    - "odd" если value не четное
-
-  PS: используй тернарный оператор
+  Написать функцию, addUniqueNumbers(...), 
+  которая получает произвольное кол-во чисел как аргументы, 
+  и добавляет в массив uniqueNumbers только уникальные,
+  а те которые в массиве уже есть игнорирует.
 */
 
-const value = Number.parseInt(Math.random() * 100);
+const uniqueNumbers  = [2, 1, 4, 9];
 
-console.log(`${value} is ${type}`);
+// Вызовы функции для проверки
+addUniqueNumbers(1, 2, 3);
+console.log(
+  uniqueNumbers
+); // [2, 1, 4, 9, 3]
+
+addUniqueNumbers(12, 2, 3, 19);
+console.log(
+  uniqueNumbers
+); // [2, 1, 4, 9, 3, 12, 19]
+
+addUniqueNumbers(4, 5, 12, 3, 1, 2, 8);
+console.log(
+  uniqueNumbers
+); // [2, 1, 4, 9, 3, 12, 19, 5, 8]

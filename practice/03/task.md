@@ -1,13 +1,21 @@
 /*
-  Есть три переменные name, date и roomType, содержащие имя гостя, 
-  дату его прибытия на отдых и тип комнаты отеля.
+  Напиши функцию checkForSpam(str)
   
-  Создай переменную message и используя шаблонные строки запиши в нее сообщение формата:
-  "имя гостя" прибывает на отдых "дата прибытия" в "тип комнаты".
+  Функция принимает 1 параметр str - строку,
+  и проверять ее на содержание слов: spam и sale
+  
+  Если нашли зарещенное слово то функция возвращает true,
+  если запрещенных слов нет функция возвращает false
+  
+  PS: слова могут быть в произвольном регистре
 */
 
-const name = 'Mango';
-const date = '14/08/2137';
-const roomType = 'люкс';
+// Вызовы функции для проверки
+console.log( checkForSpam('Latest technology news') ); // false
 
-console.log(message); // Mango прибывает на отдых 14/08/2137 в люкс
+console.log( checkForSpam('JavaScript weekly newsletter') ); // false
+
+console.log( checkForSpam('Get best sale offers now!') ); // true
+
+console.log( checkForSpam('[SPAM] How to earn fast money?') ); // true
+

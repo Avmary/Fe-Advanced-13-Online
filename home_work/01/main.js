@@ -7,7 +7,7 @@ const Priority = {
 const notepad = {
   notes: [],
   getNotes() {
-    return (this.notes.length === 0) ? 'Error: The notes are empty' : this.notes;
+    return this.notes;
     /*
        * Принимает: ничего
        * Возвращает: все заметки, значение свойства notes
@@ -43,9 +43,9 @@ const notepad = {
        * Возвращает: ничего
        */
   deleteNote(id) {
-    for (const obj in this.notes) {
-      if (this.notes[obj].id === id) {
-        this.notes.splice(obj, 1);
+    for (const index in this.notes) {
+      if (this.notes[index].id === id) {
+        this.notes.splice(index, 1);
       }
     }
   },

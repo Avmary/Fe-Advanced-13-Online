@@ -34,7 +34,8 @@ const notepad = {
        * Принимает: объект заметки
        * Возвращает: сохраненную заметку
        */
-    return this.notes.push(note);
+    this.notes.push(note);
+    return note;
   },
   /*
        * Удаляет заметку по идентификатору из массива notes

@@ -1,5 +1,5 @@
 
-const Notepad = function Notepad(notes) {
+const Notepad = function Notepad(notes = []) {
   this.notes = notes,
   this.getNotes = function () {
     return this.notes;
@@ -15,12 +15,14 @@ const Notepad = function Notepad(notes) {
        * Принимает: идентификатор заметки
        * Возвращает: заметку с совпавшим полем id или undefined если ничего не найдено
        */
-    for (const obj of this.notes) {
-      if (obj.id === id) {
-        return obj;
-      }
-    }
-    return undefined;
+    // for (const obj of this.notes) {
+    //   if (obj.id === id) {
+    //     return obj;
+    //   }
+    // }
+    // return undefined;
+    const result = this.notes.find(x => x.id === id);
+    return result;
   },
   this.saveNote = function (note) {
     /*
@@ -29,7 +31,8 @@ const Notepad = function Notepad(notes) {
        * Принимает: объект заметки
        * Возвращает: сохраненную заметку
        */
-    return this.notes.push(note);
+    this.notes.push(note);
+    return note;
   },
   /*
        * Удаляет заметку по идентификатору из массива notes
@@ -64,7 +67,7 @@ const Notepad = function Notepad(notes) {
     //        */
     for (const obj of this.notes) {
       this.findNoteById(id).priority = priority;
-      return this;
+      return obj;
     }
   },
   this.filterNotesByQuery = function (query) {

@@ -1,14 +1,24 @@
 
-const Notepad = function Notepad(notes = []) {
-  this.notes = notes,
-  this.getNotes = function () {
-    return this.notes;
+class Notepad {
+  constructor(notes = []) {
+    this._notes = notes;
+  }
+
+  static Priority = {
+      LOW: 0,
+      NORMAL: 1,
+      HIGH: 2,
+  }
+
+  get notes() {
+    return this._notes;
     /*
        * Принимает: ничего
        * Возвращает: все заметки, значение свойства notes
        */
-  },
-  this.findNoteById = function (id) {
+  }
+
+  findNoteById(id) {
     /*
        * Ищет заметку в массиве notes
        *
@@ -21,33 +31,36 @@ const Notepad = function Notepad(notes = []) {
     //   }
     // }
     // return undefined;
-    const result = this.notes.find(x => x.id === id);
+    const result = this._notes.find(x => x.id === id);
     return result;
-  },
-  this.saveNote = function (note) {
+  }
+
+  saveNote(note) {
     /*
        * Сохраняет заметку в массив notes
        *
        * Принимает: объект заметки
        * Возвращает: сохраненную заметку
        */
-    this.notes.push(note);
+    this._notes.push(note);
     return note;
-  },
+  }
+
   /*
        * Удаляет заметку по идентификатору из массива notes
        *
        * Принимает: идентификатор заметки
        * Возвращает: ничего
        */
-  this.deleteNote = function (id) {
-    for (const index in this.notes) {
-      if (this.notes[index].id === id) {
-        this.notes.splice(index, 1);
+  deleteNote(id) {
+    for (const index in this._notes) {
+      if (this._notes[index].id === id) {
+        this._notes.splice(index, 1);
       }
     }
-  },
-  this.updateNoteContent = function (id, updatedContent) {
+  }
+
+  updateNoteContent(id, updatedContent) {
     /*
        * Обновляет контент заметки
        * updatedContent - объект с полями вида {имя: значение, имя: значение}
@@ -57,20 +70,22 @@ const Notepad = function Notepad(notes = []) {
        * Возвращает: обновленную заметку
        */
     return Object.assign(this.findNoteById(id), updatedContent);
-  },
-  this.updateNotePriority = function (id, priority) {
+  }
+
+  updateNotePriority(id, priority) {
     //     /*
     //        * Обновляет приоритет заметки
     //        *
     //        * Принимает: идентификатор заметки и ее новый приоритет
     //        * Возвращает: обновленную заметку
     //        */
-    for (const obj of this.notes) {
+    for (const obj of this._notes) {
       this.findNoteById(id).priority = priority;
       return obj;
     }
-  },
-  this.filterNotesByQuery = function (query) {
+  }
+
+  filterNotesByQuery(query) {
     /*
        * Фильтрует массив заметок по подстроке query.
        * Если значение query есть в заголовке или теле заметки - она подходит
@@ -79,13 +94,14 @@ const Notepad = function Notepad(notes = []) {
        * Возвращает: новый массив заметок, контент которых содержит подстроку
        */
     const newArray = [];
-    for (const obj of this.notes) {
+    for (const obj of this._notes) {
       const titleLowCase = obj.title.toLowerCase();
       const bodyLowCase = obj.body.toLowerCase();
       if (titleLowCase.includes(query) || bodyLowCase.includes(query)) { newArray.push(obj); }
     } return newArray;
-  },
-  this.filterNotesByPriority = function (priority) {
+  }
+
+  filterNotesByPriority(priority) {
     /*
        * Фильтрует массив заметок по значению приоритета
        * Если значение priority совпадает с приоритетом заметки - она подходит
@@ -94,22 +110,16 @@ const Notepad = function Notepad(notes = []) {
        * Возвращает: новый массив заметок с подходящим приоритетом
        */
     const newArray = [];
-    for (const obj of this.notes) {
+    for (const obj of this._notes) {
       if (obj.priority === priority) {
         newArray.push(obj);
       }
     } return newArray;
-  };
-};
+  }
+}
 
-Notepad.Priority = {
-  LOW: 0,
-  NORMAL: 1,
-  HIGH: 2,
-};
 
 // Далее идет код для проверки работоспособности конструктора и созданного экземпляра, вставь его в конец скрипта. Твоя реализация конструктора Notepad должна проходить этот тест.
-
 const initialNotes = [
   {
     id: 'id-1',
@@ -130,9 +140,9 @@ const initialNotes = [
 const notepad = new Notepad(initialNotes);
 
 /*
- * Смотрю что у меня в заметках после инициализации
- */
-console.log('Все текущие заметки: ', notepad.getNotes());
+  Смотрю что у меня в заметках после инициализации
+*/
+console.log('Все текущие заметки: ', notepad.notes);
 
 /*
  * Добавляю еще 2 заметки и смотрю что получилось
@@ -153,66 +163,60 @@ notepad.saveNote({
   priority: Notepad.Priority.LOW,
 });
 
-console.log('Все текущие заметки: ', notepad.getNotes());
+console.log('Все текущие заметки: ', notepad.notes);
 
 /*
  * Зима уже близко, пора поднять приоритет на покупку одежды
  */
 notepad.updateNotePriority('id-4', Notepad.Priority.NORMAL);
 
-console.log(
-  'Заметки после обновления приоритета для id-4: ',
-  notepad.getNotes(),
-);
+console.log('Заметки после обновления приоритета для id-4: ', notepad.notes);
 
-/*
- * Решил что фреймворки отложу немного, понижаю приоритет
- */
+// /*
+//  * Решил что фреймворки отложу немного, понижаю приоритет
+//  */
 notepad.updateNotePriority('id-3', Notepad.Priority.LOW);
 
-console.log(
-  'Заметки после обновления приоритета для id-3: ',
-  notepad.getNotes(),
-);
+console.log('Заметки после обновления приоритета для id-3: ', notepad.notes);
 
-/*
- * Решил отфильтровать заметки по слову html
- */
+// /*
+//  * Решил отфильтровать заметки по слову html
+//  */
 console.log(
   'Отфильтровали заметки по ключевому слову "html": ',
   notepad.filterNotesByQuery('html'),
 );
 
-/*
- * Решил отфильтровать заметки по слову javascript
- */
+// /*
+//  * Решил отфильтровать заметки по слову javascript
+//  */
 console.log(
   'Отфильтровали заметки по ключевому слову "javascript": ',
   notepad.filterNotesByQuery('javascript'),
 );
 
-/*
- * Хочу посмотреть только заметки с нормальным приоритетом
- */
+// /*
+//  * Хочу посмотреть только заметки с нормальным приоритетом
+//  */
 console.log(
   'Отфильтровали заметки по нормальному приоритету: ',
   notepad.filterNotesByPriority(Notepad.Priority.NORMAL),
 );
 
-/*
- * Обновим контент заметки с id-3
- */
+// /*
+//  * Обновим контент заметки с id-3
+//  */
 notepad.updateNoteContent('id-3', {
   title: 'Get comfy with React.js or Vue.js',
 });
 
 console.log(
   'Заметки после обновления контента заметки с id-3: ',
-  notepad.getNotes(),
+  notepad.notes,
 );
 
-/*
- * Повторил HTML и CSS, удаляю запись c id-2
- */
+// /*
+//  * Повторил HTML и CSS, удаляю запись c id-2
+//  */
 notepad.deleteNote('id-2');
-console.log('Заметки после удаления с id -2: ', notepad.getNotes());
+console.log('Заметки после удаления с id -2: ', notepad.notes);

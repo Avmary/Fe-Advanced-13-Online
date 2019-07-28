@@ -1,30 +1,54 @@
-const User = function (name, age, friends) {
-  this.name = name,
-  this.age = age;
-  this.friends = friends,
+class Car {
+  constructor({ maxSpeed = 0 }) {
+    this.speed = 0;
+    this.maxSpeed = maxSpeed;
+    this.running = false;
+    this.distance = 0;
+  }
 
-  this.getInfo = function () {
-    console.log(`User ${name} is ${age} years old and has ${friends} friends`);
-  };
-};
+  turnOn() {
+    this.running = true;
+  }
 
-const mango = new User('Mango', 2, 20);
-mango.getInfo(); // User Mango is 2 years old and has 20 friends
+  turnOff() {
+    this.running = false;
+  }
 
-const poly = new User('Poly', 3, 17);
-poly.getInfo(); // User Poly is 3 years old and has 17 friends
+  accelerate(spd) {
+    if (this.maxSpeed < spd) return;
+    this.speed = spd;
+  }
+
+  decelerate(spd) {
+    if (spd < 0 || this.maxSpeed < spd) return;
+    this.speed = spd;
+  }
+
+  drive(hours) {
+    if (this.running === false) return;
+    this.distance = hours * this.speed;
+  }
+}
 
 
-let user = {
-  data: [
-    { name: 'T. Woods', age: 37 },
-    { name: 'P. Mickelson', age: 43 },
-  ],
-  clickHandler (event) {
-      var randomNum = ((Math.random () * 2 | 0) + 1) - 1; 
-//  Случайное число от 0 до 1.        
-//  Эта строка добавляет случайного человека из массива данных в текстовое поле.        
-$("input").val(this.data[randomNum].name + " " + this.data[randomNum].age);
-  },
-};
-//  Назначаем eventHandler на событие по клику на кнопку$ ("button").click (user.clickHandler);
+const car = new Car({ maxSpeed: 100 });
+car.turnOn();
+console.log(car.running);
+car.turnOff();
+console.log(car.running);
+car.turnOn();
+console.log(car.running);
+car.accelerate(150);
+console.log(car.speed);
+car.accelerate(90);
+console.log(car.speed);
+car.decelerate(90);
+console.log(car.speed);
+car.decelerate(-10);
+console.log(car.speed);
+car.decelerate(120);
+console.log(car.speed);
+car.decelerate(80);
+console.log(car.speed);
+car.drive(5);
+console.log(car.distance);

@@ -1,28 +1,31 @@
-function Account(login, password, type = 'regular') {
-  this.login = login;
-  this.password = password;
-  this.type = type;
+class StringBuilder {
+  constructor(string) {
+    this._value = string;
+  }
 
-  this.changePassword = function (newPassword) {
-    this.password = newPassword;
-  };
+  get value() {
+    return this._value;
+  }
 
-  this.getInfo = function () {
-    console.log(`
-        Login: ${login}, 
-        Pass: ${password}, 
-        Type: ${type}
-      `);
-  };
+  append(str) {
+    this._value = this._value + str;
+  }
+
+  prepend(str) {
+    this._value = str + this._value;
+  }
+
+  pad(str) {
+    this._value = str + this._value + str;
+  }
 }
+const builder = new StringBuilder('.');
 
-const account = new Account('Mango', 'qwe123', 'premium');
+builder.append('^');
+console.log(builder.value); // '.^'
 
-console.log(account.login); // 'Mango'
-console.log(account.password); // 'qwe123'
-console.log(account.type); // 'premium'
+builder.prepend('^');
+console.log(builder.value); // '^.^'
 
-account.changePassword('asdzxc');
-console.log(account.password); // 'asdzxc'
-
-account.getInfo(); // Login: 'Mango', Pass: 'asdzxc', Type: 'premium'
+builder.pad('=');
+console.log(builder.value); // '=^.^='

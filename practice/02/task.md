@@ -1,32 +1,27 @@
-/*  
- * Расставь отсутствующие this в конструкторе Account
+/*
+  Напиши ES6 класс StringBuilder.
+  
+  На вход (в конструкторе) он получает один параметр string - строку,
+  которую записывает в свойство _value.
+  
+  Добавь классу следующие методы:
+  
+    - геттер value - возвращает текущее значение поля _value
+  
+    - append(str) - получает парметр str (строку) и добавляет ее в конец _value
+    
+    - prepend(str) - получает парметр str (строку) и добавляет ее в начало value
+  
+    - pad(str) - получает парметр str (строку) и добавляет ее в начало и в конец _value
 */
 
-function Account(login, password, type = "regular") {
-  login = login;
-  password = password;
-  type = type;
+const builder = new StringBuilder('.');
 
-  changePassword = function(newPassword) {
-    password = newPassword;
-  };
+builder.append('^'); 
+console.log(builder.value); // '.^'
 
-  getInfo = function() {
-    console.log(`
-      Login: ${login}, 
-      Pass: ${password}, 
-      Type: ${type}
-    `);
-  };
-}
+builder.prepend('^'); 
+console.log(builder.value; // '^.^'
 
-const account = new Account("Mango", "qwe123", "premium");
-
-console.log(account.login); // 'Mango'
-console.log(account.password); // 'qwe123'
-console.log(account.type); // 'premium'
-
-account.changePassword("asdzxc");
-console.log(account.password); // 'asdzxc'
-
-account.getInfo(); // Login: 'Mango', Pass: 'asdzxc', Type: 'premium'
+builder.pad('='); 
+console.log(builder.value); // '=^.^='

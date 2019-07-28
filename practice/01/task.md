@@ -1,30 +1,16 @@
-/*  
- * Расставь отсутствующие this в методах объекта account
+/*
+  Напиши функцию-конструктор Account, которая добавляет будущему объекту поля login, email. 
+  
+  В prototype функции-конструктора добавь метод getInfo(), 
+  который выводит в консоль значения полей login и email. 
+  
+  Обрати внимание, метод всего один, в поле prototype функции-конструктора, 
+  а использовать его смогут все экземпляры, по ссылке.
+  
+  Создать несколько экземпляров с разными значениями свойств, вывесди их в консоль.
 */
 
-const account = {
-  owner: "Mango",
-  balance: 24000,
-  discount: 0.1,
-  orders: ["order-1", "order-2", "order-3"],
-  changeDiscount(value) {
-    discount = value;
-  },
-  getOrders() {
-    return orders;
-  },
-  addOrder(cost, order) {
-    balance -= cost;
-    orders.push(order);
-  }
-};
+const account = new Account('Mangozedog', 'mango@dog.woof');
 
-account.changeDiscount(0.15);
-console.log(account.discount); // 0.15
-
-const orders = account.getOrders();
-console.log(orders); // ['order-1', 'order-2', 'order-3']
-
-account.addOrder(5000, "order-4");
-console.log(account.balance); // 19000
-console.log(account.orders); // ['order-1', 'order-2', 'order-3', 'order-4']
+console.log(Account.prototype.getInfo); // function
+account.getInfo(); // Login: Mangozedog, Email: mango@dog.woof

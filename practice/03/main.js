@@ -1,20 +1,5 @@
-/*
-  Напиши функцию setGuestState(guests, period), где
-  guests - массив гостей, period - кол-во дней после
-  которого считается что гость не активен.
-
-  Если значение поля inactiveDays болше чем period,
-  поставить для isActive значение false.
-
-  Если же значение inactiveDays меньше чем period,
-  поставить для isActive значение true
-
-  PS: обязательно используй перебирающие методы массивов, никаких for!
-*/
-const setGuestState = (guests, period) => guests.map(guest =>
-  (guests.inactiveDays < period ? 
-    {...guest, isActive : false} : 
-    guest),);
+const setGuestState = (guests, period) => guests.map(guest => (guest.inactiveDays > period
+  ? { ...guest, isActive: false } : { ...guest, isActive: true }));
 const guests = [
   { name: 'Mango', inactiveDays: 15, isActive: true },
   { name: 'Poly', inactiveDays: 8, isActive: false },

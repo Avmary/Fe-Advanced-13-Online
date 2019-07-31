@@ -1,12 +1,3 @@
-/*
-  Напиши функию getPropValues(arr, prop), принимающую
-  параметры arr - массив, и prop - имя ключа в объекте.
-
-  Функция должна возвращать массив всех значений этого ключа из arr.
-
-  PS: обязательно использу перебирающие методы массивов, никаких for!
-*/
-
 const getPropValues = (arr, prop) => arr.map(el => el[prop]);
 const guests = [
   { name: 'Mango', age: 20, isActive: true },

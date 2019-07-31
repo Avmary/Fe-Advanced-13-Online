@@ -1,20 +1,3 @@
-/*  Перепишите все циклы for используя методы map, filter, find, reduce и т. д. */
-
-/*
-  Функция findGreaterThan принимает два параметра - число и массив.
-  Возвращает новый массив, содержащий элементы которые больше числа.
-*/
-// const findGreaterThan = (num, arr) => {
-//     const result = [];
-
-//     for (let i = 0, max = arr.length; i < max; i += 1) {
-//       if (arr[i] > num) {
-//         result.push(arr[i]);
-//       }
-//     }
-
-//     return result;
-//   };
 const findGreaterThan = (num, arr) => arr.filter(el => el > num);
 console.log(findGreaterThan(2, [1, 2, 3, 4, 5])); // [3, 4, 5,]
 console.log(findGreaterThan(3, [1, 2, 3, 4, 5])); // [4, 5,]

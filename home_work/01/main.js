@@ -85,39 +85,40 @@ const users = [
   },
 ];
 
+// 1 ===========================================================================
 const getAllNames = users => users.map(user => user.name);
 
 console.log(getAllNames(users));
 // [ 'Moore Hensley', 'Sharlene Bush', 'Ross Vazquez', 'Elma Head', 'Carey Barr',
 // 'Blackburn Dotson', 'Sheree Anthony' ]
 
-
+// 2 ===========================================================================
 const getUsersByEyeColor = (users, color) => users
   .filter(user => user.eyeColor === color);
 
 console.log(getUsersByEyeColor(users, 'blue'));
 // [объект Moore Hensley, объект Sharlene Bush, объект Carey Barr]
 
-
+// 3 ===========================================================================
 const getUsersByGender = (users, gender) => users
   .filter(user => user.gender === gender).map(user => user.name);
 
 console.log(getUsersByGender(users, 'male'));
 // [ 'Moore Hensley', 'Ross Vazquez', 'Carey Barr', 'Blackburn Dotson' ]
 
-
+// 4 ===========================================================================
 const getInactiveUsers = users => users.filter(user => !user.isActive);
 
 console.log(getInactiveUsers(users));
 // [объект Moore Hensley, объект Ross Vazquez, объект Blackburn Dotson]
 
-
+// 5 ===========================================================================
 const getUserByEmail = (users, email) => users.find(user => user.email === email);
 
 console.log(getUserByEmail(users, 'shereeanthony@kog.com')); // {объект пользователя Sheree Anthony}
 console.log(getUserByEmail(users, 'elmahead@omatom.com')); // {объект пользователя Elma Head}
 
-
+// 6 ===========================================================================
 const getUsersWithAge = (users, min, max) => users.filter(user => min < user.age && user.age < max);
 
 console.log(getUsersWithAge(users, 20, 30));
@@ -126,13 +127,13 @@ console.log(getUsersWithAge(users, 20, 30));
 console.log(getUsersWithAge(users, 30, 40));
 // [объект Moore Hensley, объект Sharlene Bush, объект Blackburn Dotson, объект Sheree Anthony]
 
-
+// 7 ===========================================================================
 const getTotalBalance = users => users
   .reduce((totalBalance, user) => totalBalance + user.balance, 0);
 
 console.log(getTotalBalance(users)); // 20916
 
-
+// 8 ===========================================================================
 const getUsersByFriend = (users, name) => users
   .filter(user => user.friends.includes(name)).map(user => user.name);
 
@@ -140,9 +141,9 @@ console.log(getUsersByFriend(users, 'Briana Decker')); // [ 'Sharlene Bush', 'Sh
 console.log(getUsersByFriend(users, 'Goldie Gentry')); // [ 'Elma Head', 'Sheree Anthony' ]
 
 
-// 3. Дополнительное задание
+//  Дополнительное задание
 
-
+// 1 ===========================================================================
 const getUniqueSkills = users => users.map(user => user.skills)
   .reduce((acc, val) => acc.concat(val), [])
   .filter((user, index, arr) => index === arr.indexOf(user))
@@ -151,9 +152,7 @@ console.log(getUniqueSkills(users));
 // [ 'adipisicing', 'amet', 'anim', 'commodo', 'culpa', 'elit', 'ex', 'ipsum', 'irure', 'laborum',
 // 'lorem', 'mollit', 'non', 'nostrud', 'nulla', 'proident', 'tempor', 'velit', 'veniam' ]
 
-/*
-Массив имен (поле name) людей, отсортированных в зависимости от количества их друзей (поле friends)
-*/
+// 2 ===========================================================================
 const getNamesSortedByFriendsCount = users => users
   .sort((a, b) => a.friends.length - b.friends.length)
   .map(user => user.name);

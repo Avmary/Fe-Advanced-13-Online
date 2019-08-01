@@ -1,4 +1,5 @@
-const getTotal = (products, order) => Object.keys(order).reduce((total, key) => total + order[key] * products[key], 0);
+const getTotal = (products, order) => Object.keys(order)
+  .reduce((total, key) => total + order[key] * products[key], 0);
 const products = {
   bread: 10,
   milk: 15,

@@ -1,9 +1,3 @@
-/*
-* Напиши функцию getTotal(order), которая получает обьект заказа с продуктами и их ценой.
-* Функция возвращает число - общую стоимость заказа.
-*
-* Используй метод reduce.
-*/
 const getTotal = order => Object.keys(order).reduce((acc, key) => acc + order[key], 0);
 console.log(getTotal({ apples: 25, chicken: 60, milk: 15 })); // 100
 

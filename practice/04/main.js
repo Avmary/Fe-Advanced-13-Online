@@ -1,10 +1,3 @@
-/*
-  Напиши функию getActiveGuests(guests), принимающую массив объектов гостей.
-
-  Функция должна возвращать массив объектов гостей, значение поля isActive которых true.
-
-  PS: обязательно используй перебирающие методы массивов, никаких for!
-*/
 const getActiveGuests = guests => guests.filter(guest => guest.isActive);
 const guests = [
   { name: 'Mango', age: 20, isActive: true },

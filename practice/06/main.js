@@ -1,11 +1,3 @@
-/*
-  Напишите функию findGuestById(guests, id), принимающую
-  guests - массив объектов гостей, id - идентификатор (число).
-
-  Функция должна возвращать объект гостя с совпадающим id.
-
-  PS: обязательно используй перебирающие методы массивов, никаких for!
-*/
 const findGuestById = (guests, id) => guests.find(guest => guest.id === id);
 const guests = [
   { id: 1, name: 'Mango', age: 20 },

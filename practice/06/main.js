@@ -33,7 +33,7 @@ function createMovieCard({
   Release,
   Rating,
 }) {
-  const wrap = createMovieCardElem('div', 'wrap');
+//   const wrap = createMovieCardElem('div', 'wrap');
   const movie = createMovieCardElem('div', 'movie', null, imdbID);
   const image = createMovieCardElem('img', 'movie__image', null, null, Image, Title);
   const body = createMovieCardElem('div', 'movie__body');
@@ -41,10 +41,10 @@ function createMovieCard({
   const description = createMovieCardElem('p', 'movie__description', Description);
   const release = createMovieCardElem('p', 'movie__date', `Released: ${Release}`);
   const rating = createMovieCardElem('p', 'movie__rating', `Rating: ${Rating}`);
-  wrap.append(movie);
+  //   wrap.append(movie);
   movie.append(image, body);
   body.append(title, description, release, rating);
-  return wrap;
+  return movie;
 }
 
 function createMovieCardsList(listRef, movieCards) {

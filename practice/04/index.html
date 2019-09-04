@@ -8,10 +8,30 @@
     <title>Practice 08/04</title>
   </head>
   <body>
-    <div class="wrapper">
-      <ul class="gallery wrapper"></ul>
-    </div>
-    <script src="./db.js"></script>
+    <form class="question-form">
+      <div class="options">
+        <label>
+        <input type="radio" name="option" value="html">
+        HTML
+      </label>
+        <label>
+        <input type="radio" name="option" value="css">
+        CSS
+      </label>
+        <label>
+        <input type="radio" name="option" value="js">
+        JavaScript
+      </label>
+        <label>
+        <input type="radio" name="option" value="php">
+        PHP
+      </label>
+      </div>
+      
+      <button class="btn" type="submit">Submit</button>
+    </form>
+    
+    <p class="result">Result: </p>
     <script src="./main.js"></script>
   </body>
 </html>

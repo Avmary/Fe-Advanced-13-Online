@@ -1,25 +1,22 @@
-function createElem(tag, className, url = null, alt = null) {
-  const element = document.createElement(tag);
-  className.split(' ').map(e => element.classList.add(e));
-  if (url) {
-    element.src = url;
-  }
-  if (alt) {
-    element.alt = alt;
-  }
-  return element;
-}
-function createItem({ url, alt }) {
-  const li = createElem('li', 'gallery-item');
-  const img = createElem('img', 'gallery-img', url, alt);
-  li.append(img);
-  return li;
+/*
+  Есть форма с набором радиокнопок. Пользователь выбирает вариант ответа,
+  после чего нажимает кнопку "Submit" и происходит отправка формы.
+
+  При отправке формы:
+    - не должна перезагружаться страница
+    - необходимо получить выбранную опцию и вывести в параграф с классом .result
+*/
+const refs = {
+  inputs: document.querySelectorAll('.options input'),
+  result: document.querySelector('.result'),
+  submit: document.querySelector('.btn'),
+};
+
+function userSelect(event) {
+  event.preventDefault();
+  const value = [...refs.inputs].find(e => e.checked).value;
+  refs.result.textContent = `Result: ${value}`;
 }
 
-function renderNoteList(ref, arr) {
-  const elem = ref.cloneNode(false);
-  elem.append(...arr.map(e => createItem(e)));
-  ref.replaceWith(elem);
-}
 
-renderNoteList(document.querySelector('.gallery'), galleryItems);
+refs.submit.addEventListener('click', userSelect);

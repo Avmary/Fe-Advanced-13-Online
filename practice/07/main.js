@@ -1,23 +1,15 @@
-const INIT = {
-  STEP: 10,
-  SIZE: 30,
-};
+const inputs = document.querySelectorAll('.input-list input');
+[...inputs].map(e => e.addEventListener('blur', validation));
 
-const getRandomHEXBite = () => {
-  let res = Math.floor(Math.random() * 256).toString(16);
-  return (res = res.length > 1 ? res : `0${res}`);
-};
-
-const getRandomColor = () => `#${getRandomHEXBite()}${getRandomHEXBite()}${getRandomHEXBite()}`;
-
-
-(function createBoxes(num) {
-  const container = document.querySelector('#root');
-  new Array(num).fill('').map((e, i) => {
-    const div = document.createElement('div');
-    div.style.cssText = `width : ${INIT.SIZE + i * INIT.STEP}px; 
-                        height : ${INIT.SIZE + i * INIT.STEP}px;
-                        background-color : ${getRandomColor()};`;
-    container.appendChild(div);
+function validation(e) {
+  e.preventDefault();
+  [...inputs].map((e) => {
+    if (+e.dataset.length === e.value.length) {
+      e.classList.add('valid');
+      e.classList.remove('invalid');
+    } else {
+      e.classList.add('invalid');
+      e.classList.remove('valid');
+    }
   });
-}(12));
+}

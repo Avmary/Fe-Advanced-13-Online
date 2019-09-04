@@ -1,13 +1,37 @@
-const listElements = document.querySelector('.list');
-listElements.firstElementChild.style.color = 'red';
-listElements.lastElementChild.style.color = 'blue';
+const refs = {
+  inputs: document.querySelectorAll('input[type="text"]'),
+  result: document.querySelector('.result'),
+  btn: document.querySelector('button[data-action="add"]'),
+};
 
-// const ref = {
-//     list: document.querySelector('.list'),
+refs.btn.addEventListener('click', calc);
+function calc(event) {
+  event.preventDefault();
+  refs.result.textContent = [...refs.inputs].reduce(
+    (a, e) => parseFloat(e.value) + a,
+    0,
+  );
+}
+// 2 вариант (ментора) ======================================================
+// const refs = {
+//     result: document.querySelector(".result"),
+//     reset: document.querySelector('button[type="reset"]'),
+//     inputs: document.querySelectorAll(".expression input")
 //   };
-//   function getColor(elem) {
-//     elem.firstElementChild.style.color = 'red';
-//     elem.lastElementChild.style.color = 'blue';
+
+//   refs.inputs[1].addEventListener("input", calc);
+//   refs.reset.addEventListener("click", reset);
+
+//   function calc(event) {
+//     event.preventDefault();
+//     refs.result.textContent = Array.from(refs.inputs).reduce(
+//       (a, e) => parseFloat(e.value) + a,
+//       0
+//     );
 //   }
 
-//   getColor(ref.list);
+//   function reset(event) {
+//     event.preventDefault();
+//     refs.result.textContent = 0;
+//   }
+

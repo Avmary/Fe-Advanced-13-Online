@@ -4,16 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Practice 08/02</title>
+    <link rel="stylesheet" href="main.css">
+    <title>Practice 09/02</title>
   </head>
   <body>
-    <ul class="list">
-      <li>HTML</li>
-      <li>CSS</li>
-      <li>JavaScript</li>
-      <li>React</li>
-      <li>NodeJS</li>
-    </ul>
+    <div class="container">
+      <div class="expression">
+        <input type="text" placeholder="0">
+        <span>+</span>
+        <input type="text" placeholder="0">
+        <span>=</span>
+        <span class="result">0</span>
+      </div>
+    
+      <button data-action="add">Сложить</button>
+    </div>
     <script src="./main.js"></script>
   </body>
 </html>

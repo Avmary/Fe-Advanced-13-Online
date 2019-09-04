@@ -1,0 +1,20 @@
+.wrapper{
+    width: 90%;
+    margin: 0 auto;
+    background-color: grey;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.gallery{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;    
+}
+
+.gallery-img{
+    width: 300px;
+}
+
+.gallery-item{
+    list-style: none;
+}

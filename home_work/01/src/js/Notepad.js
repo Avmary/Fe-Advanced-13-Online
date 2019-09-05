@@ -13,6 +13,7 @@ class Notepad {
   }
 
   saveNote(note) {
+    note.priority = PRIORITY_TYPES.LOW;
     this._notes.push(note);
     return note;
   }

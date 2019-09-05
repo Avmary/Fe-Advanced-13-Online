@@ -5,12 +5,24 @@ const refs = {
   modal: document.querySelector('.modal'),
 };
 
-refs.openModal.addEventListener('click', showModalWindow);
+
 function showModalWindow(event) {
   refs.modal.classList.remove('modal-hidden');
 }
-refs.closeModalButton.addEventListener('click', hideModalWindow);
-refs.closeModalBackGround.addEventListener('click', hideModalWindow);
+
 function hideModalWindow(event) {
   refs.modal.classList.add('modal-hidden');
 }
+
+function closeModalBackGround({ target }) {
+  if (target.classList.contains('modal')) {
+    refs.modal.classList.add('modal-hidden');
+  }
+  if (target.classList.contains('close-modal')) {
+    refs.modal.classList.add('modal-hidden');
+  }
+}
+
+refs.openModal.addEventListener('click', showModalWindow);
+refs.closeModalButton.addEventListener('click', hideModalWindow);
+refs.closeModalBackGround.addEventListener('click', closeModalBackGround);
